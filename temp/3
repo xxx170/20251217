@@ -1,0 +1,32 @@
+/* [치트키 3] 만능 트리거 */
+CREATE OR REPLACE TRIGGER 트리거이름
+BEFORE INSERT OR UPDATE ON 테이블명
+FOR EACH ROW
+DECLARE
+    v_temp NUMBER;
+BEGIN
+    -- 1. 삽입(INSERT) 상황일 때
+    IF INSERTING THEN
+        -- NULL이면 평균값으로 채우기
+        IF :NEW.length IS NULL THEN
+            SELECT AVG(length) INTO :NEW.length FROM Movie;
+        END IF;
+
+        -- NULL이면 다른 테이블에서 랜덤으로 뽑아오기
+        IF :NEW.producerno IS NULL THEN
+            SELECT certno INTO :NEW.producerno
+            FROM (
+                SELECT certno FROM MovieExec ORDER BY DBMS_RANDOM.VALUE
+            )
+            WHERE ROWNUM = 1;
+        END IF;
+    END IF;
+    
+    -- 2. 값 변경 못하게 막기 (예: 이름 변경 금지)
+    IF UPDATING THEN
+        IF :NEW.name != :OLD.name THEN
+            :NEW.name := :OLD.name; -- 옛날 값으로 되돌림
+        END IF;
+    END IF;
+END;
+/
