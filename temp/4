@@ -1,0 +1,10 @@
+/* [치트키 4] 중첩 테이블 INSERT 문법 */
+-- 1. 일단 빈 리스트(생성자)를 포함해서 INSERT
+INSERT INTO 스타정보 (name, s_movies)
+VALUES ('홍길동', smov_tab()); 
+
+-- 2. 그 다음 TABLE() 함수를 써서 리스트 안에 진짜 데이터 넣기
+INSERT INTO TABLE (
+    SELECT s_movies FROM 스타정보 WHERE name = '홍길동'
+)
+VALUES (smov_ty('영화제목', 2024, 100)); -- 객체 생성자 사용
