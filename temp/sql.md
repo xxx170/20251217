@@ -9,7 +9,7 @@
 3.  **통(`award_tab`):** 위 알맹이를 담을 리스트 타입을 만듭니다.
 4.  **테이블(`StarAwards`):** 배우 이름(PK)과 리스트를 담을 테이블을 만듭니다.
 
-**💻 정답 코드**
+** 코드**
 
 ```sql
 -- 1. 청소하기 (기존 것 삭제)
@@ -60,7 +60,7 @@ NESTED TABLE Awards STORE AS awards_store_table;
 4.  **성별 로직:** 1990년 이후 출생자 중 많은 성별 찾기
 5.  **기록 로직:** `DML_History`에 INSERT 하고 `COMMIT`
 
-**💻 정답 코드**
+** 코드**
 
 ```sql
 CREATE OR REPLACE TRIGGER Star_Auto_Manage
