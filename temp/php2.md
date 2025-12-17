@@ -1,6 +1,6 @@
 ## PHP 관련 (HTML + PHP 연동)
 
-### 문제 5: DB 연결
+### DB 연결
 **설명:**  
 Oracle DB에 연결하는 기본 코드입니다.  
 
@@ -11,7 +11,7 @@ if (!$conn) { echo "Connection Error"; }
 
 ---
 
-### 문제 6: Insert / Update
+### Insert / Update
 **설명:**  
 Movie 테이블에 삽입/갱신하는 코드입니다.  
 
@@ -41,7 +41,7 @@ if ($submit == "갱신") {
 
 ---
 
-### 문제 7: Select + 출력
+### Select + 출력
 **설명:**  
 Movie 테이블과 MovieExec 테이블을 조인하여 영화 정보를 출력합니다.  
 
